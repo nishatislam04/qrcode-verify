@@ -144,7 +144,7 @@ fi
 
 # Add ARGs for syncing permissions
 ARG UID=1000
-ARG GID=1000
+ARG GID=1001
 
 # Create a new user with the specified UID and GID, reusing an existing group if GID exists
 RUN if getent group ${GID}; then \

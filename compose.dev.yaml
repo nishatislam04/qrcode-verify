@@ -44,7 +44,7 @@ services:
     networks:
       - laravel-development
     depends_on:
-      postgres:
+      mysql:  
         condition: service_started  # Wait for postgres to start
 
   workspace:
@@ -73,16 +73,34 @@ services:
     networks:
       - laravel-development
 
-  postgres:
-    image: postgres:16
-    ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+  mysql:
+    image: mysql:8.4
+    container_name: mysql
+    restart: unless-stopped
     environment:
-      - POSTGRES_DB=app
-      - POSTGRES_USER=laravel
-      - POSTGRES_PASSWORD=secret
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: app
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: secret
+    ports:
+      - "3306:3306"
     volumes:
-      - postgres-data-development:/var/lib/postgresql/data
+      - mysql-data:/var/lib/mysql
+    networks:
+      - laravel-development
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+    depends_on:
+      - mysql
     networks:
       - laravel-development
 
@@ -95,4 +113,4 @@ networks:
   laravel-development:
 
 volumes:
-  postgres-data-development:
+  mysql-data:
