@@ -1,3 +1,5 @@
+.PHONY: artisan migrate migrate-fresh migrate-refresh rollback seed tinker cache-clear composer-install npm-install npm-dev npm-build
+
 PHP_CONTAINER = qrcode-php-fpm-1
 
 dev:
@@ -24,6 +26,7 @@ seed:
 tinker:
 	docker exec -it $(PHP_CONTAINER) php artisan tinker
 
+# make artisan cmd="make:model QrCode -mfs"
 artisan:
 	docker exec -it $(PHP_CONTAINER) php artisan $(cmd)
 
