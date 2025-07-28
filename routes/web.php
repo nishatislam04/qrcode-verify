@@ -12,6 +12,6 @@ Route::get('/qrcode', [QrCodeController::class, 'index'])->name('qrcode');
 
 Route::get('/qrcode/{qrcode}', [QrCodeController::class, 'show'])->name('qrcode.show');
 
-Route::get('/verify', function () {
-    return Inertia::render('verify/index');
-})->name('verify');
+Route::get('/verify/{qrcode}', [QrCodeController::class, 'verify'])->name('verify');
+
+Route::post('/qrcode/register', [QrCodeController::class, 'register'])->name('qrcode.register');
