@@ -2,8 +2,14 @@
 
 PHP_CONTAINER = qrcode-php-fpm-1
 
+# for  now it stay like this, we will update it later again
 dev:
-	docker compose -f compose.dev.yaml up 
+	npx concurrently \
+		"docker compose -f compose.dev.yaml up" \
+		"composer run dev"
+
+down:
+	docker compose -f compose.dev.yaml down
 
 prod:
 	docker compose -f compose.prod.yaml --build -d

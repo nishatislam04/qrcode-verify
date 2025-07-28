@@ -4,14 +4,12 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('welcome');
-})->name('home');
+    return Inertia::render('index');
+})->name('index');
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
-});
+Route::get('/verify', function () {
+    return Inertia::render('verify/index');
+})->name('verify');
 
 require __DIR__.'/settings.php';
 require __DIR__.'/auth.php';

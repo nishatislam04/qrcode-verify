@@ -13,3 +13,6 @@
 
 - [] log ip address & timestamp in laravel log
 
+- [] add biome
+
+- [] add prettier 
