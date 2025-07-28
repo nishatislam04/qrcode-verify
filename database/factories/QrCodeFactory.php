@@ -27,7 +27,6 @@ class QrCodeFactory extends Factory
             'registered_at' => null,
             'scanned_at' => null,
             'scanned_ip' => null,
-            'scanned_by_user_id' => null,
         ];
     }
 }

@@ -12,14 +12,14 @@ class QrCodeSeeder extends Seeder
      */
     public function run(): void
     {
-        // Generate 1 million QR codes in chunks
         // $batchSize = 10000;
+        $batchSize = 100;
         // $total = 1_000_000;
-        $batchSize = 1;
-        $total = 1;
+        $total = 1_000;
 
-        for ($i = 0; $i < $total / $batchSize; $i++) {
-            QrCode::factory($batchSize)->create();
+        for ($i = 0; $i < ($total / $batchSize); $i++) {
+            $qrcodes = QrCode::factory()->count($batchSize)->make()->toArray();
+            QrCode::insert($qrcodes); // Bulk insert - faster and lighter
         }
     }
 }
