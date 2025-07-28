@@ -62,6 +62,7 @@ services:
         XDEBUG_LOG_LEVEL: 0
     ports:
       - '${VITE_PORT:-5173}:5173'
+    command: sh -c "npm install && npm run dev"
     tty: true  # Enables an interactive terminal
     stdin_open: true  # Keeps standard input open for 'docker exec'
     env_file:
