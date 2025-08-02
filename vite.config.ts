@@ -18,7 +18,7 @@ export default defineConfig({
         host: '0.0.0.0',
         port: 5173,
         hmr: {
-            host: process.env.LOCAL_IP,
+            host: process.env.PRIVATE_IP,
             clientPort: 5173,
         },
     },  

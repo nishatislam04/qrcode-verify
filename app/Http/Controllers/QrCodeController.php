@@ -54,6 +54,14 @@ class QrCodeController extends Controller
             'phone' => $request->phone,
         ]);
 
-        return redirect()->route('qrcode.show', $code->id)->with('success', 'Qr Code registered successfully');
+        // return redirect()->route('verify.showSuccess')->with('success', 'Qr Code registered successfully');
+        return redirect()->route('verify.showSuccess');
+    }
+
+    public function showSuccess()
+    {
+        return Inertia::render('verify/showSuccess', [
+            'success' => 'Qr Code registered successfully',
+        ]);
     }
 }

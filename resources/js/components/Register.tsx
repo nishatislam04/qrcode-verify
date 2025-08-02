@@ -14,13 +14,12 @@ export default function Register({ qrcode }: { qrcode: string }) {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
+    <div className="mt-12 flex flex-col items-center justify-center px-4 w-full">
+      <h2 className="text-4xl mt-18 mb-6 text-blue-400 text-center">Register Your Qr Code</h2>
       <form
         onSubmit={handleSubmit}
         className="p-6 rounded-xl shadow-md w-full max-w-md space-y-4"
       >
-        <h2 className="text-xl font-bold text-center">Register</h2>
-
         <div>
           <label className="block text-sm font-medium text-gray-700">Name</label>
           <input
@@ -57,7 +56,7 @@ export default function Register({ qrcode }: { qrcode: string }) {
         <button
           type="submit"
           disabled={processing}
-          className="w-full bg-blue-600 py-2 rounded-md hover:bg-blue-700 transition"
+          className="mt-6 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition"
         >
           {processing ? 'Submitting...' : 'Submit'}
         </button>
