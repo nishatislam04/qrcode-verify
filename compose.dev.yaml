@@ -26,7 +26,8 @@ services:
       args:
         UID: ${UID:-1000}
         GID: ${GID:-1001}
-        XDEBUG_ENABLED: ${XDEBUG_ENABLED:-true}
+        # Disable Xdebug for faster build times during normal development
+        XDEBUG_ENABLED: "false"
         XDEBUG_MODE: develop,coverage,debug,profile
         XDEBUG_HOST: ${XDEBUG_HOST:-host.docker.internal}
         XDEBUG_IDE_KEY: ${XDEBUG_IDE_KEY:-DOCKER}
@@ -53,7 +54,8 @@ services:
       args:
         UID: ${UID:-1000}
         GID: ${GID:-1001}
-        XDEBUG_ENABLED: ${XDEBUG_ENABLED:-true}
+        # Disable Xdebug for faster build times during normal development
+        XDEBUG_ENABLED: "false"
         XDEBUG_MODE: develop,coverage,debug,profile
         XDEBUG_HOST: ${XDEBUG_HOST:-host.docker.internal}
         XDEBUG_IDE_KEY: ${XDEBUG_IDE_KEY:-DOCKER}
@@ -73,7 +75,6 @@ services:
 
   mysql:
     image: mysql:8.4
-    container_name: mysql
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -89,7 +90,6 @@ services:
 
   phpmyadmin:
     image: phpmyadmin:latest
-    container_name: phpmyadmin
     restart: unless-stopped
     ports:
       - "8080:80"

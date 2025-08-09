@@ -1,4 +1,5 @@
 # adding
+
 - [x] qr code shall be uuid
 
 - [] remove default login
